@@ -69,4 +69,14 @@ jobs:
               #echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME
               docker push innovanon/sdl
             fi
+      - run:
+          name: Push upstream (xorg-base)
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              curl --location --request POST \
+                'https://circleci.com/api/v2/project/github/InnovAnon-Inc/xorg-base/pipeline' \
+                --header 'Content-Type: application/json' \
+                -u "${XORG_BASE_API_TOKEN}:"
+            fi
+
 
