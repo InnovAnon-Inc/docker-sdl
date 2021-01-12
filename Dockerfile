@@ -27,6 +27,7 @@ RUN sleep 31 \
  && cd                            SDL     \
  && ./autogen.sh                          \
  && ./configure                           \
+      --disable-shared --enable-static    \
  && make                                  \
  && make DESTDIR=/tmp/sdl install         \
  && cd           /tmp/sdl                 \
