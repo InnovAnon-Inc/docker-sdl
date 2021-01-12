@@ -76,7 +76,8 @@ jobs:
               curl --location --request POST \
                 'https://circleci.com/api/v2/project/github/InnovAnon-Inc/xorg-base/pipeline' \
                 --header 'Content-Type: application/json' \
-                -u "${XORG_BASE_API_TOKEN}:"
+                --data '{"branch":"master"}' \
+                -u "${API_TOKEN}:"
             fi
 
 
