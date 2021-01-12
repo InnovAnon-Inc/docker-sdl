@@ -7,7 +7,8 @@ COPY --from=innovanon/libpng     /tmp/libpng.txz     /tmp/
 COPY --from=innovanon/jpeg-turbo /tmp/jpeg-turbo.txz /tmp/
 RUN cat   /tmp/*.txz  \
   | tar Jxf - -i -C / \
- && rm -v /tmp/*.txz
+ && rm -v /tmp/*.txz  \
+ && ldconfig
 #RUN tar xf                       /tmp/zlib.txz       -C / \
 # && tar xf                       /tmp/bzip2.txz      -C / \
 # && tar xf                       /tmp/xz.txz         -C / \
@@ -31,6 +32,7 @@ RUN sleep 31 \
  && make                                  \
  && make DESTDIR=/tmp/sdl install         \
  && cd           /tmp/sdl                 \
+ && strip.sh .                            \
  && tar acf        ../sdl.txz .           \
  && rm -rf           $LFS/sources/SDL
 
