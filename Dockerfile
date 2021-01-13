@@ -23,7 +23,7 @@ RUN sleep 31 \
  && make DESTDIR=/tmp/sdl install         \
  && cd           /tmp/sdl                 \
  && strip.sh .                            \
- && tar acf        ../sdl.txz .           \
+ && tar  pacf        ../sdl.txz .           \
  && rm -rf           $LFS/sources/SDL
 
 FROM scratch as final
